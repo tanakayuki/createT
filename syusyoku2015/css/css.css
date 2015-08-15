@@ -1,44 +1,75 @@
 /* CSS Document */
 .wrapper {
-	height: auto !important;
-    background-color: #f5f5f5;
-	height: 100%;
-	padding-top:2%;
-	margin: 0 auto; 
-	overflow: hidden;
+    height: auto !important;
+    /*background-color: #F2F2F2;*/
+    /*background-image:url("http://www.hanten.jp/home/goods/tairyo/images/maifu.gif") ;*/
+    height: 100% padding-top:2%;
+    margin: 0 auto;
+    overflow: hidden;
     width: 100%;
 }
+#header_text{
+    width: 100%;
+    background-color: #F2F2F2;
+    margin-top: 7%;
+    height: 150px;
+}
+#page_text{
+    padding-top: 2%;
+    padding-right: 17.3%;
+    text-align:right;
+}
+#page_text h1{
+    color: #dad4b1;
+}
+#page_text span{
+    font-style: normal;
+    font-size: smaller;
+}
 h2{
-	font-size:18px;
+    font-size:18px;
 }
 .nav-collapse{
-	display:block;
+    display:block;
 }
 #content{
-	margin:0 auto;
-	overflow:hidden;
-	/*基点*/
-	position : static;
+    clear: both;
+    margin:0 auto;
+    overflow:hidden;
+    /*基点*/
+    position : static;
 }
 input[type="radio"]{
-  -webkit-appearance: none;
-  width:40px;
-  height:40px;
-  border:2px solid #19283C;
-  border-radius:15px;
-  opacity:0.5;
+    -webkit-appearance: none;
+    width:40px;
+    height:40px;
+    border:2px solid #19283C;
+    border-radius:15px;
+    opacity:0.5;
+}
+/**
+ローディング
+**/
+#loading{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    z-index: 9999;
 }
 
 /**
 リスト
 **/
 #L_cont{
-    padding-top:2%;
     height: 100%;
 }
 #L_cont table{
     background-color: #E0DDD4;
     margin-bottom:4%;
+}
+td{
+    text-align: center;
+    margin: 0 auto;
 }
 .search_type_now{
     line-height: 44px;
@@ -52,18 +83,26 @@ input[type="radio"]{
     line-height: 44px;
     font-weight: bold;
 }
+.tyuu{
+    color: #da756c;
+    font-size: xx-small;
+}
 .search_select{
     text-align: center;
     color: #fff;
     background-color:#4e4134;
 }
 #C_cont{
-    padding-top:3%;
+    padding-left: 0.9%;
+    /*background-color: #d8d8d8;*/
+    /*border: 1px solid #dad4b1;*/
+    /*background-image: url("http://free-texture.net/wp-content/uploads/wall04.jpg");*/
+    background-size: contain;
 }
 .search_head{
     width: 100%;
     padding-bottom: 1%;
-    border-bottom: dashed 1px #000000;
+    border-bottom: dashed 1px #1A1A1A;
 }
 .search_head p{
     font-size: x-large;
@@ -110,31 +149,31 @@ input[type="radio"]{
     cursor: pointer;
 }
 #not{
-	background:#fff;
+    background:#fff;
 }
 #red{
-	background:#F30;
+    background:#F30;
 }
 #bule{
-	background:#00F;
+    background:#00F;
 }
 #green{
-	background:#6F0;
+    background:#6F0;
 }
 #broun{
-	background:#C93;
+    background:#C93;
 }
 input[type="radio"]:checked{
-  border:8px solid #F00;
-  border-radius:50%;
+    border:8px solid #F00;
+    border-radius:50%;
 }
 
 
 /*footer{*/
-	/*background-repeat:repeat-x ;*/
-	/*line-height:100px;*/
-	/*text-align:center;*/
-	/*padding-top:30px;*/
+/*background-repeat:repeat-x ;*/
+/*line-height:100px;*/
+/*text-align:center;*/
+/*padding-top:30px;*/
 /*}*/
 /*
  ページトップbtn
@@ -183,7 +222,7 @@ a.pagetop_btn:hover {
 #footer{
     width:100%;
     height:320px;
-    background-color:#BABABA;
+    background-color:#4e4134;
     overflow:hidden;
 }
 #footer .footerWrapper{
@@ -260,7 +299,7 @@ a.pagetop_btn:hover {
     width:100%;
     height:20px;
     padding:16px 0;
-    background-color:#8A8A8A;
+    background-color:#4e4134;
     text-align:center;
 }
 #copy .copy{
@@ -278,201 +317,12 @@ a.pagetop_btn:hover {
 
 /*トグル*/
 #toggle{
-	line-height:120%;
-	position:fixed;
-	z-index:30;
-	display:none;
+    line-height:120%;
+    position:fixed;
+    z-index:30;
+    display:none;
 }
 
-
-
-
-@media only screen and (max-width: 767px) {
-/*スマホ*/
-.nav-collapse{
-	display:none;
-}
-#toggle{
-	display:block;
-}
-#L_cont{
-	display:none;
-}
-#L_cont tr{
-	text-align:center;
-	width:100%;
-	float:left;
-}
-#L_cont{
-	float:left;
-	width:50%;
-	position:fixed;
-	z-index:20;
-}
-#C_cont{
-	float:left;
-	width:100%;
-}
-/********************
-*シャツの画像canvas
-*
-*********************/
-.imageCover6 {
-	width:55%;
-	margin:0 auto;
-}
-.thumbnails{
-	margin:0 auto;
-}
-.span9,.row,.thumbnails{
-	width:100%;
-}
-.span3{
-	width:20%;
-}
-td{
-	width:10%;
-}
-/********************
-*help
-*
-*********************/
-.fix{
-	position:static;
-	display:block;
-	z-index:10;
-}
-#help1{
-	position:absolute;
-	top :35%;
-	left:70%;
-}
-#help2{
-	position:absolute;
-	top :85%;
-	left:43%;
-	}
-#help3{
-	position:absolute;
-	top :57%;
-	left:53%;
-	}
-/*on off 画像*/
-.off,.on{
-	background-repeat:no-repeat;
-	height:51px;
-}
-.off{
-	background-image:url(../images/off.png);
-}
-.on {
-	background-image:url(../images/on.png);
-}
-#help{
-	text-align:right;
-}
-#help_img{
-	margin-left:85%;
-}
-#help_text{
-	position:absolute;
-}
-}
-@media only screen and (min-width: 768px) {
-/*または　@media only screen and (man-width: 768px) */
-.nav-collapse{
-	display:none;
-}
-#toggle{
-	display:block;
-}
-/*タブレット*/
-#L_cont{
-	display:block;
-}
-#L_cont tr{
-	text-align:center;
-	width:50%;
-	float:left;
-}
-#L_cont{
-	float:left;
-	width:100%;
-	position:fixed;
-	z-index:20;
-}
-#C_cont{
-	float:left;
-	margin-top:0%;
-	width:100%;
-}
-/********************
-*シャツの画像canvas
-*
-*********************/
-.imageCover6 {
-	width:55%;
-	margin:0 auto;
-}
-
-.thumbnails{
-	margin:0 auto;
-}
-.span9,.row,.thumbnails{
-	width:100%;
-}
-.span3{
-	width:30%;
-}
-td{
-	width:20%;
-}
-/********************
-*help
-*
-*********************/
-.fix{
-	position:static;
-	display:block;
-	z-index:10;
-}
-#help1{
-	position:absolute;
-	top :60%;
-	left:70%;
-}
-#help2{
-	position:absolute;
-	top :110%;
-	left:30%;
-	}
-#help3{
-	position:absolute;
-	top :90%;
-	left:45%;
-	}
-/*on off 画像*/
-.off,.on{
-	background-repeat:no-repeat;
-	height:51px;
-}
-.off{
-	background-image:url(../images/off.png);
-}
-.on {
-	background-image:url(../images/on.png);
-}
-#help{
-	text-align:right;
-}
-#help_img{
-	margin-left:85%;
-}
-#help_text{
-	position:absolute;
-}
-}
-@media only screen and (min-width: 1110px) {
     /*960~1260*/
     #toggle {
         display: none;
@@ -488,12 +338,11 @@ td{
 
     #L_cont tr {
         width: 100%;
-        float: left;
     }
 
     #L_cont {
         float: left;
-        width: 23%;
+        width: 20%;
         position: relative;
         z-index: 10;
     }
@@ -503,11 +352,19 @@ td{
     }
 
     #C_cont {
+        position:relative;
         float: left;
-        width: 62%;
+        width: 55%;
         height: 100%;
         margin-top: 0%;
         margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #R_cont{
+        float: left;
+        width: 20%;
+        height: 100%;
     }
 
     /********************
@@ -515,66 +372,110 @@ td{
     *
     *********************/
     .imageCover6 {
-       /* padding-left: 70px;*/
+        /* padding-left: 70px;*/
         width: 100%;
     }
     .imageCover6 ,.imageCover6 canvas{
         overflow: hidden;
+    }
+    .thumbnails{
+        margin:0 auto;
+    }
+    .span9,.row,.thumbnails{
+        width:100%;
+    }
+    .span3{
+        width:30%;
+    }
+    td{
+        width:20%;
+    }
+    /********************
+    *help
+    *
+    *********************/
+    .fix{
+        display:block;
+        z-index:10;
+    }
+    #help1{
+        position:absolute;
+        top :20%;
+        left:85%;
+    }
+    #help2{
+        position:absolute;
+        top :70%;
+        left:0%;
+    }
+    /*on off 画像*/
+    .off,.on{
+        background-repeat:no-repeat;
+        height:51px;
+    }
+    .off{
+        background-image:url(../images/off.png);
+    }
+    .on {
+        background-image:url(../images/on.png);
+    }
+    #help{
+        width: 50%;
+        float: left;
+        padding-bottom: 2%;
+    }
+
+    /**
+    *ボタン系
+    */
+    .btn_custom:link,.btn_custom:visited{
+        color: #000;
+    }
+    .btn_custom{
+        cursor: pointer;
+        margin: 0 auto;
+        font-size: smaller;
+        padding: 2% 1%;
+        text-align: center;
+        display: block;
+        border: 3px solid #D8D8D8;
+        width: 85%;
+        line-height: 200%;
+        /*float: left;*/
+        transition-property: background,width;
+        transition-duration: 0.3s;
+    }
+    .btn_custom:hover{
+        text-decoration: none;
+        width:90%;
+        background:#333;
+        color: #fff;
+    }
+    /**
+    *完了ページのボタン
+    **/
+.btn_custom2:link,.btn_custom2:visited{
+    color: #000;
 }
-.thumbnails{
-	margin:0 auto;
+.btn_custom2{
+    cursor: pointer;
+    margin: 5% 0 0 10%;
+    font-size: smaller;
+    padding: 3% 1%;
+    text-align: center;
+    display: block;
+    border: 3px solid #D8D8D8;
+    width: 50%;
+    line-height: 200%;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    /*float: left;*/
+    transition-property: background,width;
+    transition-duration: 0.3s;
 }
-.span9,.row,.thumbnails{
-	width:100%;
-}
-.span3{
-	width:30%;
-}
-td{
-	width:20%;
-}
-/********************
-*help
-*
-*********************/
-.fix{
-	position:static;
-	display:block;
-	z-index:10;
-}
-#help1{
-	position:absolute;
-	top :40%;
-	left:67%;
-}
-#help2{
-	position:absolute;
-	top :85%;
-	left:40%;
-	}
-#help3{
-	position:absolute;
-	top :59%;
-	left:52%;
-	}
-/*on off 画像*/
-.off,.on{
-	background-repeat:no-repeat;
-	height:51px;
-}
-.off{
-	background-image:url(../images/off.png);
-}
-.on {
-	background-image:url(../images/on.png);
-}
-#help{
-	text-align:right;
-}
-#help_img{
-	margin-left:80%;
-}
-#help_text{
-	position:absolute;
-}
+.btn_custom2:hover{
+    text-decoration: none;
+    width:90%;
+    background:#333;
+    color: #fff;
 }

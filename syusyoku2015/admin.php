@@ -34,7 +34,52 @@ if(isset($_GET['ok'])){
 	);
 	$temp = $SELECT -> SQL($sql,'');
 	$UPDATA_query -> SQL($temp);
+
+    /**********************
+     *メール送信
+     *
+     *
+     ***********************/
+    $mail="ohs25003@sirusoba.com";
+    $temp_val ="投稿された服について";
+    $text = <<<EOD
+    あなたが投稿した服が承認されました。
+EOD;
+    mb_language('Japanese');
+    mb_internal_encoding('UTF-8');
+    mb_send_mail($mail,$temp_val,$text,"FROM:".$mail);
 	header("location:admin.php");
+}
+/******************
+ *服の一覧の取得
+ *
+ *Publication が　2の公開状態のもののみ表示する
+ *******************/
+if(isset($_GET['no'])){
+    $id = $_GET['clothes_id'];
+    $sql = array(
+        'UPDATE'=>'Clothes',
+        'SET'=>' ',
+        'Publication'=>"= 9",
+        'WHERE'=>'clothes_id='."$id",
+    );
+    $temp = $SELECT -> SQL($sql,'');
+    $UPDATA_query -> SQL($temp);
+
+    /**********************
+     *メール送信
+     *
+     *
+     ***********************/
+    $mail="ohs25003@osaka.hal.ac.jp";
+    $temp_val ="投稿された服について";
+    $text = <<<EOD
+    あなたが投稿した服は拒否されました。
+EOD;
+    mb_language('Japanese');
+    mb_internal_encoding('UTF-8');
+    mb_send_mail($mail,$temp_val,$text,"FROM:".$mail);
+    header("location:admin.php");
 }
 ?>
 
@@ -57,68 +102,14 @@ if(isset($_GET['ok'])){
 </head>
 <body>
   <div class="wrapper">
-  <?php //共通ヘッダー ?>
-  <?php require_once("header.php");?>
-       
+      <style>
+          #C_cont {
+              width: 90%;
+          }
+      </style>
       <div id="content">
-      
-      	<div id="L_cont" class="well">
-       <h2 class="page-header">検索方法</h2>
-       <form action="">
-        <table class="table">
-          <tr>
-            <td><label>タグ</label><input type="text"></td>
-          </tr>
-            <tr>
-           <td><label>都道府県</label>
-	        <select name="blood">
-            	<option value="">-- 選 択 --</option>
-    	    	<option value="A">兵庫県</option>
-         		<option value="B">京都府</option>
-           		<option value="O">滋賀県</option>
-           		<option value="AB">大阪府</option>
-                <option value="B">奈良県</option>
-           		<option value="O">和歌山県</option>
-            </select>
-          </td>
-          </tr>
-          <tr>
-            <td><label>作成時期</label><input type="date" name="example1"></td>
-          </tr>
-           <tr>
-           <td><label>ジャンル</label>
-	        <select name="blood">
-            	<option value="">-- 選 択 --</option>
-    	    	<option value="A">カフェ</option>
-         		<option value="B">モダン</option>
-           		<option value="O">ポップ</option>
-           		<option value="AB">シック</option>
-            </select>
-          </td>
-          </tr>
-           <tr>
-           <td><label>色</label>
-            <input type="radio" name="s2" id="not" value="" checked="">
-            <input type="radio" name="s2" id="red" value="1">
-            <input type="radio" name="s2" id="bule" value="2">
-            <input type="radio" name="s2" id="green" value="3">
-            <input type="radio" name="s2" id="broun" value="4">
-           </td>
-          </tr>
-           <tr>
-            <td><button type="submit" class="btn"> 検 索 </button></td>
-          </tr>
-        </table>
-        </form>
-       
-        </div>      
-    	
-        
-        
-       <div id="C_cont" class="well">
-       <h2 class="page-header">検索結果</h2>
+       <div id="C_cont" style="background-color: transparent;">
        <h3>公開認証待ちリスト</h3>
-       <div class="row">
        <div class="span9">
         		<ul class="thumbnails">
                 <?php
@@ -144,28 +135,10 @@ if(isset($_GET['ok'])){
               <?php
               }
 			  }?>
-                 
                </ul>
-                      <div class="pagination" style="text-align:center;">
-<ul>
-<li><a href="#">Prev</a></li>
-<li class="active">
-<a href="#">1</a>
-</li>
-<li><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">4</a></li>
-<li><a href="#">Next</a></li>
-</ul>
-</div>
-         </div>
-         </div>
-         
          </div>
         
       </div>
-    <?php //共通フッター?>      
- 	<?php require_once("footer.php"); ?>
     </div>
 </body>
 </html>

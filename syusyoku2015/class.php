@@ -1,5 +1,5 @@
 <?php 
-header("Content-Type: text/html; charset=UTF-8"); 
+header("Content-Type: text/html; charset=UTF-8");
 /************
 *設定ファイル
 *
@@ -324,4 +324,87 @@ foreach($list as $data){
 		 echo '<option value="'.$data['tag_id'].'">'.$data['tag_name'].'</option>';
 	 }
 	}
-} 
+}
+
+
+
+
+/*
+*入力チェック
+*
+*/
+function CHECK($arr){
+    //今回は名前なのでこれ
+    $msg[] = array("err"=>"");
+    //引数カウンタ
+    $i = 0 ;
+    foreach($arr as $val){
+        $data =  explode("-",$val);
+        /*連想配列の添え字作成
+        *汎用性なし
+        */
+        if($data[1]=="名前"){
+            $text = "name";
+        }
+        else if($data[1]=="検索氏名"){
+            $text = "name2";
+        }
+        else if($data[1]=="年齢"){
+            $text = "age";
+        }
+        else if($data[1]=="年齢1"){
+            $text = "age1";
+        }
+        else if($data[1]=="年齢2"){
+            $text = "age2";
+        }
+        else{
+            //URLパラメータでの例外エラー
+            return false;
+        }
+        //エラーの優先度
+        $flg = 0;
+
+        $data_chk = array_slice($data, 2); //3番目以降を取得
+        //配列内検索
+        if(in_array("n", $data_chk)){
+            //未入力チェック 引数 n
+            if($data[0]==""){
+                $i++;
+                $err_code = array($text."_val" => $data[0] , $text."_err" => $data[1]."が未入力です" , $text."_border" => "control-group error");
+                $msg[0] += array($text => $err_code);
+                $msg[0]["err"] = $i;
+                $flg = 1 ;
+            }
+            else if(!in_array("m", $data_chk)){
+                $err_code = array($text."_val" => $data[0] , $text."_err" => "OK" , $text."_border" => "control-group success");
+                $msg[0] += array($text => $err_code);
+            }
+        }
+        if(in_array("m", $data_chk) && $flg != 1){
+            //数値チェック 引数 n
+            if(!is_numeric(($data[0]))){
+                $i++;
+                $err_code = array($text."_val" => $data[0] , $text."_err" => $data[1]."が数値ではありません" , $text."_border" => "control-group error");
+                $msg[0] += array($text => $err_code);
+                $msg[0]["err"] = $i;
+            }
+            else{
+                $err_code = array($text."_val" => $data[0] , $text."_err" => "OK" , $text."_border" => "control-group success");
+                $msg[0] += array($text => $err_code);
+
+            }
+        }
+    }
+    //デバッグ用
+    //var_dump($msg);
+    /**
+     *エラーカウンタが０だったらfalseを返す
+     *エラーカウンタが０以外だったらエラーメッセージを返す
+     **/
+    if($i==0){
+        return false;
+    }else{
+        return $msg;
+    }
+}

@@ -94,128 +94,194 @@ function dorequest($url, $params, $type)
     <?php //js css 外部読み込み分のまとめ ?>
     <?php require_once("imput.php") ?>
 
-
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="jQuery Parallax Plugin Demo_files/reset.css">
-<link href="./jQuery Parallax Plugin Demo_files/style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="./jQuery Parallax Plugin Demo_files/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="./jQuery Parallax Plugin Demo_files/jquery.localscroll-1.2.7-min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
+    <link href="./jQuery Parallax Plugin Demo_files/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./jQuery Parallax Plugin Demo_files/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="./jQuery Parallax Plugin Demo_files/jquery.localscroll-1.2.7-min.js"></script>
+<!--    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">-->
+<!--    <script src="js/jquery.min.js"></script>-->
+    <script src="js/jquery.ghosttype-1.2.js"></script>
+    <script src="js/jquery.inview.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.top_nav ul li').removeClass('active');
+            $('.top_nav ul li:eq(0)').addClass('active');
+//            body_fade();
+            //$('#nav').localScroll(800);
+            $('#intro').parallax("10%", 0.1);
+            $('#second').parallax("30%", 0.1);
+            $('.bg1').parallax("10%", 0.5);
+            $('.bg2').parallax("30%", 0.2);
+            $('#third').parallax("50%", 0.3);
+            $('#intro').localScroll();
+        });
+        $(function () {
+        /**
+         *live使っている　スクロールに応じたアニメーション処理
+         */
+        $('#logo').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+            if (isInView) {
+                //要素が見えたときに実行する処理
+                $(".float-right img").hide().toggleClass('animated fadeInRight');
+            } else {
+                //要素が見えなくなったときに実行する処理
+                $(".float-right img").show().toggleClass('animated fadeInRight');
+            }
+        });
+            $('footer').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+                if (isInView) {
+                    //要素が見えたときに実行する処理
+                    $("#footer_title h1").show().toggleClass('fadeInDown animated');
+                    $("#footer_title p").show().toggleClass('fadeInDown animated');
+                    $("#footer_login").show().toggleClass('fadeInDown animated');
 
-    body_fade();
+                    $(".con div").show().toggleClass('fadeInLeft animated');
+                } else {
+                    //要素が見えなくなったときに実行する処理
+                    $("#footer_title h1").hide().removeClass('fadeInDown animated');
+                    $("#footer_title p").hide().removeClass('fadeInDown animated');
+                    $("#footer_login").hide().toggleClass('fadeInDown animated');
 
-    //$('#nav').localScroll(800);
-	$('#intro').parallax("10%", 0.1);
-    $('#intro2').parallax("20%", 0.3);
-    $('#second').parallax("30%", 0.1);
-    $('#second2').parallax("50%", 0.3);
-	$('.bg1').parallax("10%", 0.5);
-	$('.bg2').parallax("10%", 0.2);
-	$('#third').parallax("50%", 0.3);
-
-
-    $('#intro').localScroll();
-})
-</script>
-
-
+                    $(".con div").hide().toggleClass('fadeInLeft animated');
+                }
+            });
+            $(".type").each(function() {
+                var $this = $(this);
+                var str = $this.text();
+                $this.empty().show();
+                str = str.split("");
+//              str.push("|");
+//                待機時間
+                var delay = 100;
+                $.each(str, function(i, val) {
+                    if (val == "^") {
+//              ^を書くと待機する
+                } else {
+                        $this.append('<span>' + val + '</span>');
+                        $this.children("span").hide().fadeIn(100).delay(delay * i);
+                    }
+                });
+                $this.children("span:last").css("textDecoration", "blink");
+            });
+        });
+        $(function () {
+            slidr.create('slidr-inline-static', {
+                breadcrumbs: true,
+//                controls: 'corner',
+                fade: false,
+                overflow: false,
+                theme: '#222',
+                timing: { 'linear': '0.5s ease-in' },
+                transition: 'linear'
+            }).start();
+        });
+    </script>
 </head>
-
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=799166940143798&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-
+<style>
+    .fadeInRight{
+        /* ５秒かけてアニメーションする */
+        /*-webkit-animation-duration: 3s;*/
+        /*animation-duration: 2s;*/
+        /* 4秒待ってからアニメーションする */
+        /*-webkit-animation-duration: 4s;*/
+        /*animation-delay: 4s;*/
+        /* 5回繰り返す */
+        /*-webkit-animation-iteration-count: 5;*/
+        /*animation-iteration-count: 5;*/
+    }
+</style>
 <div id="warp">
-<!--グローバルナビ-->
-　　<?php //ヘッダー ?>
-   <?php require_once("header.php");?>
-
-<div id="intro" style="background-position: 50% 0px;">
-    <div class="story">
-      <div class="float-left">
-        <h2>カスタマイズTシャツ？</h2>
-          <div id="login">
-          <p>まずはログイン</p>
-              <p><a href="./login/google_login.php">
-                      <img src="./images/google-login-button.png">
-                  </a>
-              </p>
-          </div>
-<!--          facebook-->
-          <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<!--      line  -->
-          <span>
-<script type=”text/javascript” src=”//media.line.me/js/line-button.js?v=20140127″ ></script>
-<script type=”text/javascript”>
-new media_line_me.LineButton({“pc”:true,”lang”:”ja”,”type”:”a”,”text”:”ここにURL“,”withUrl”:true});
-</script>
-</span>
-
-          <!-- head 内か、body 終了タグの直前に次のタグを貼り付けてください。 -->
-          <script src="https://apis.google.com/js/platform.js" async defer>
-              {lang: 'ja'}
-          </script>
-
-          <!-- +1 ボタン を表示したい位置に次のタグを貼り付けてください。 -->
-          <div class="g-plusone" data-annotation="inline" data-width="300"></div>
-
-
-          <span>
-<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
-<script type="text/javascript">
-    new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a"});
-</script>
-</span>
-          <a href="http://line.me/R/msg/text/?LINE%E3%81%A7%E9%80%81%E3%82%8B%0D%0Ahttp%3A%2F%2Fline.me%2F">
-              <img src="./images/sns/line.png" width="70" alt="LINEで送る" />
-          </a>
-
-      </div>
-      </div> <!--.story-->
+    <div id="intro" style="background-position: 50% 0px;">
+        <div id="intro2">
+        <div class="story">
+            <?php //共通ヘッダー ?>
+            <?php require_once("header.php");?>
+<!--        --><?php //require_once "top_img.php"; ?>
+        <style>
+            .footer_container{
+                width: 90%;
+                margin: 0 auto;
+            }
+            .con{
+                float: left;
+                width: 50%;
+            }
+        </style>
+            <div class="float-left">
+<!--          <h1><img src="images/top_text.png"></h1>-->
+                <div id="top_Lcon">
+                <div id="top_text">
+                    <p class="type">ORIGINAL</p>
+                    <p class="type">^^^^^^T-SHIRT</p>
+                    <p class="type">^^^^^^^^^CREATE</p>
+                    <p style="font-size: 15px">みんなで作る新しい形のショッピングをご提供いたします。</p>
+                </div>
+                <div id="login">
+                    <a class="btn_custom" href="./login/google_login.php">
+                        まずはログイン
+                    </a>
+                </div>
+                    <div id="sns">
+                        <span><img src="images/sns/facebook.png"></span>
+                        <span><img src="images/sns/googleplus.png"></span>
+                        <span><img src="images/sns/twitter.png"></span>
+                    </div>
+                </div>
+                    <?php require_once("top_slider.php");?>
+            </div>
+        </div>
+        </div>
     </div>
-  <!--#intro-->
-  <div id="intro2" style="background-position: 50% 60px;">
-  <img src="jQuery Parallax Plugin Demo_files/images/bg_g3_02.png" width="112" height="45">
-  <p>START</p>
-
-</div>
 
 
 
-<div id="second" style="background-position: 50% 60px;">
-    <div class="story">
-    <div class="bg1" style="background-position: 50% 240px;"></div>
-    <div class="bg2" style="background-position: 50% 240px;"></div>
-      <div class="float-right">
-        <h2>ここのサイトについて</h2>
-        <p>みんなで作る新しい形のショッピングをご提供いたします</p>
+    <div id="second" style="background-position: 50% 60px;">
+        <div class="story">
+            <div class="bg1" style="background-position: 50% 240px;"></div>
+    <div class="bg2"></div>
+        <div class="float-right">
+<h2>マウスだけでカンタン作成</h2>
+        <img src="jQuery Parallax Plugin Demo_files/images/about.png">
       </div>
     </div> <!--.story-->
 </div>
 
-    <!--#second-->
-
-<div id="second2" style="background-position: 50% 60px;">
-  	<img src="jQuery Parallax Plugin Demo_files/images/bg_g3_02.png" width="112" height="45">
-  	<p>NEXT</p>
-</div>
-
-
-  <div id="third" style="background-position: 50% 148px;">
-    <div class="story">
-    </div><!--.story-->
-  </div><!--#third-->
+    <div id="third" style="background-position: 50% 148px;">
+        <div class="story">
+            <div class="footer_container">
+                <div class="con_text">
+                    <div id="footer_title"  style="text-align:center;">
+                        <h1 style="display:none;visibility: visible;">All In ONE For You</h1>
+                        <p style="display:none;visibility: visible;">すべてのサービスを貴方に</p>
+                    </div>
+                </div>
+                <div id="footer_login" style="display: none;">
+                    <a class="btn_custom" href="./login/google_login.php" style="margin: 0 auto;">
+                        簡単ログイン
+                    </a>
+                </div>
+                <div class="con_area">
+                    <div class="con">
+                        <div class="item" style="display:none;">
+                            <img src="./images/numbers.png">
+                            <h2>ぴったりなものを探しに行こう！</h2>
+                            <button type="button" class="btn_custom" style="margin: 0 auto;">検索する</button>
+                        </div>
+                    </div>
+                    <div class="con">
+                        <div class="item" style="display:none;visibility: visible;-webkit-animation-delay: 0.5s; -moz-animation-delay: 0.5s; animation-delay: 0.5s;">
+                            <img src="./images/analytics_two.png" width="128" height="128">
+                            <h2>自分で新たな作品を生み出そう！</h2>
+                            <button type="button" class="btn_custom" style="margin: 0 auto;">作成する</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--.story-->
+    </div><!--#third-->
     <?php //フッター領域?>
     <?php require_once("footer.php"); ?>
 </div>
-
-  
 </body></html>

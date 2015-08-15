@@ -5,6 +5,9 @@ switch ($num){
     case 1:
         clothes($_GET['sql_mode'],$_GET['page']);
         break;
+    case 2:
+        tag_src($_GET['name']);
+        break;
     default:
         echo "不正なアクセス";
 }
@@ -114,4 +117,13 @@ function clothes($sql_mode,$page_num){
     }else{
         echo count($SELECT_query->SQL($temp));
     }
+}
+
+
+
+function tag_src($name){
+//    $SELECT = new SELECT();
+//    $SELECT_query = new SELECT_query();
+//    $temp = $SELECT -> SQL($sql,'');
+//    echo "ok";
 }

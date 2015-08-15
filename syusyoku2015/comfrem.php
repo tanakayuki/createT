@@ -4,6 +4,7 @@ require_once 'db.php';
 $INSERT_auery = new INSERT_auery();
 $SELECT_auery = new SELECT_auery();
 $SELECT = new SELECT();
+
 $tag;
 $tag_name;
 $title;
@@ -19,7 +20,7 @@ if(!isset($_SESSION['$imageData'])){
 }
 else{
 	$u_id = $_SESSION['login_id']['id'];
-    echo $u_id;
+//    echo $u_id;
 	$type = $_POST['select'];
 	$color = $_POST['color'];
     $title = $_POST['title'];
@@ -41,7 +42,7 @@ if(isset($_POST['open'])){
          *エラー処理無し
          ***********************/
         $sql_new_tag = array(
-            'INSERT INTO'=>"`iw3_hew`.`Tag_masta` (`tag_name`) ",
+            'INSERT INTO'=>"`Tag_masta` (`tag_name`) ",
             'VALUES'=>"('$tag_name')",
         );
         $temp = $SELECT -> SQL($sql_new_tag,'');
@@ -93,9 +94,9 @@ $c_id = $max+1;
 *
 *
 ***********************/
-echo $c_id;
+//echo $c_id;
 $sql_tag = array(
-			'INSERT INTO'=>"`iw3_hew`.`Tag_re` (`clothes_id`, `tag_id`) ",
+			'INSERT INTO'=>"`Tag_re` (`clothes_id`, `tag_id`) ",
 			'VALUES'=>"('$c_id','$tag')",
 			);
 $temp = $SELECT -> SQL($sql_tag,'');
@@ -103,7 +104,7 @@ $temp = $SELECT -> SQL($sql_tag,'');
 $list = $INSERT_auery -> SQL($temp);
 
 $sql2 = array(
-    'INSERT INTO'=>"`iw3_hew`.`Clothes` (`clothes_id`, `user_id`, `type`, `color`, `title`, `comment`, `Publication`, `image_data`) ",
+    'INSERT INTO'=>"`Clothes` (`clothes_id`, `user_id`, `type`, `color`, `title`, `comment`, `Publication`, `image_data`) ",
     'VALUES'=>"('$c_id', '$u_id', '$type', '$color', '$title', '$comment', '$open', '$imageData')",
 );
 $temp = $SELECT -> SQL($sql2,'');
@@ -165,28 +166,49 @@ $data = $SELECT_auery -> SQL($temp2);
             opacity: 0.6;
             filter: alpha(opacity=60);
         }
+        #C_cont{
+            width: 44%;
+            margin: 0 auto;
+        }
+        #R_cont{
+            width: 20%;
+            position: absolute;
+            top: 80%;
+            right: 20%;
+            width: 30%;
+        }
+        #comp{
+           padding-right: 5%;
+        }
     </style>
 </head>
 <body>
   <div class="wrapper">
-  <?php require_once("header.php");?>
-      <div id="content" class="well">
-       <div id="C_cont" class="well">
-       <h2 class="page-header">作成完了</h2>
-<img src="data:image/jpg;base64,<?php echo $data[0]['image_data']; ?>"/>
+      <?php //共通ヘッダー ?>
+      <?php require_once("header.php");?>
+      <div id="header_text">
+          <div id="page_text">
+              <h1>Completion page</h1>
+              <span>完了ページ</span>
+          </div>
+      </div>
 
-         </div>
+      <div id="content" >
+       <div id="C_cont" >
+           <div id="comp">
+               <img src="data:image/jpg;base64,<?php echo $data[0]['image_data']; ?>"/>
+           </div>
+       </div>
           <div id="R_cont">
-              <a href="./mypage.php" >
-                  <img src="images/kakuhin_btn1.png"/>
+              <a class="btn_custom2" href="./list.php" >
+                  みんなの作品を見に行く
               </a>
-              <a href="#" >
-                  <img src="images/kakuhin_btn2.png"/>
+              <a class="btn_custom2" href="#" >
+                 この服を注文する
               </a>
-              <a href="./list.php" >
-                  <img src="images/kakuhin_btn3.png"/>
+              <a class="btn_custom2" href="#" >
+                  マイページ
               </a>
-
 
           </div>
       </div>
