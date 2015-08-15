@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <?php //js css 外部読み込み分のまとめ ?>
+	<?php require_once("imput.php") ?>
+
+<script>
+$(document).ready(function(){
+    showImageCanvas();
+});
+var img_on = "b.jpg";
+$(function(){
+	$("button").click(function(){
+		img_on = "c.jpg";
+		showImageCanvas();
+	});
+});
+
+function showImageCanvas(){
+    var fileArray = ["a.png", img_on];
+    var xywh = [{x: 0, y: 0, w: 600, h: 600}, {x: 190, y: 170, w: 200, h: 200}];
+    var numFiles = fileArray.length;
+    var loadedCount = 0;
+    var imageObjectArray = [];
+    var canvas = document.getElementById('jsImageCoverCanvas');
+
+    var ctx = canvas.getContext('2d');
+
+    function loadImages(){
+        var imgObj = new Image();
+        imgObj.addEventListener('load',
+            function(){
+                loadedCount++;
+                imageObjectArray.push(imgObj);
+                if(numFiles === loadedCount){
+                    drawImage();
+                }else{
+                    loadImages();
+                }
+            },
+            false
+        );
+        imgObj.src = fileArray[imageObjectArray.length];
+    }
+    function drawImage(){
+        canvas.width = 600;
+        canvas.height = 600;
+        for(var i in imageObjectArray){
+            ctx.drawImage(imageObjectArray[i], xywh[i]['x'], xywh[i]['y'], xywh[i]['w'], xywh[i]['h']);
+            imageObjectArray[i] = null;
+        }
+    }
+    loadImages();
+}
+</script>
+
+<style>
+.imageCover6 {
+    width: 100%;
+    height: 100%;
+}
+</style>
+<title>無題ドキュメント</title>
+</head>
+
+<body>
+
+
+
+        
+       <div id="C_cont" class="well">
+       <h2 class="page-header">検索結果</h2>
+
+<div class="imageCover6">
+    <canvas id="jsImageCoverCanvas"></canvas>
+    <button id="on">画像変更</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="reset.css">
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+    showImageCanvas();
+});
+var img_on = "b.jpg";
+var img = "a.png";
+$(function(){
+	$("button").click(function(){
+		img_on = "c.jpg";
+		showImageCanvas();
+	});
+});
+
+function showImageCanvas(){
+    var fileArray = [img, img_on];
+    var xywh = [{x: 0, y: 0, w: 600, h: 600}, {x: 190, y: 170, w: 200, h: 200}];
+    var numFiles = fileArray.length;
+    var loadedCount = 0;
+    var imageObjectArray = [];
+    var canvas = document.getElementById('jsImageCoverCanvas');
+
+    var ctx = canvas.getContext('2d');
+
+    function loadImages(){
+        var imgObj = new Image();
+        imgObj.addEventListener('load',
+            function(){
+                loadedCount++;
+                imageObjectArray.push(imgObj);
+                if(numFiles === loadedCount){
+                    drawImage();
+                }else{
+                    loadImages();
+                }
+            },
+            false
+        );
+        imgObj.src = fileArray[imageObjectArray.length];
+    }
+    function drawImage(){
+        canvas.width = 600;
+        canvas.height = 600;
+        for(var i in imageObjectArray){
+            ctx.drawImage(imageObjectArray[i], xywh[i]['x'], xywh[i]['y'], xywh[i]['w'], xywh[i]['h']);
+            imageObjectArray[i] = null;
+        }
+    }
+    loadImages();
+}
+</script>
+
+<style>
+.imageCover6 {
+    width: 100%;
+    height: 100%;
+}
+</style>
+<title>無題ドキュメント</title>
+</head>
+
+<body>
+      	<div id="L_cont" class="well">
+       <h2 class="page-header">検索方法</h2>
+       <form action="">
+        <table class="table">
+          <tr>
+            <td><label>タグ</label><input type="text"></td>
+          </tr>
+            <tr>
+           <td><label>都道府県</label>
+	        <select name="blood">
+            	<option value="">-- 選 択 --</option>
+    	    	<option value="A">兵庫県</option>
+         		<option value="B">京都府</option>
+           		<option value="O">滋賀県</option>
+           		<option value="AB">大阪府</option>
+                <option value="B">奈良県</option>
+           		<option value="O">和歌山県</option>
+            </select>
+          </td>
+          </tr>
+          <tr>
+            <td><label>引っ越し時期</label><input type="date" name="example1"></td>
+          </tr>
+           <tr>
+           <td><label>ジャンル</label>
+	        <select name="blood">
+            	<option value="">-- 選 択 --</option>
+    	    	<option value="A">カフェ</option>
+         		<option value="B">モダン</option>
+           		<option value="O">ポップ</option>
+           		<option value="AB">シック</option>
+            </select>
+          </td>
+          </tr>
+           <tr>
+           <td><label>色</label>
+            <input type="radio" name="s2" id="not" value="" checked="">
+            <input type="radio" name="s2" id="red" value="1">
+            <input type="radio" name="s2" id="bule" value="2">
+            <input type="radio" name="s2" id="green" value="3">
+            <input type="radio" name="s2" id="broun" value="4">
+           </td>
+          </tr>
+           <tr>
+            <td><button type="submit" class="btn"> 検 索 </button></td>
+          </tr>
+        </table>
+        </form>
+       
+        </div> 
+
+
+<div class="imageCover6" style="text-align:center;float:left;">
+    <canvas id="jsImageCoverCanvas"></canvas>
+    <button id="on">画像変更</button>
+</div>
+
+
+</body>
+</html>

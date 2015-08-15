@@ -1,0 +1,580 @@
+/* CSS Document */
+.wrapper {
+	height: auto !important;
+    background-color: #f5f5f5;
+	height: 100%;
+	padding-top:2%;
+	margin: 0 auto; 
+	overflow: hidden;
+    width: 100%;
+}
+h2{
+	font-size:18px;
+}
+.nav-collapse{
+	display:block;
+}
+#content{
+	margin:0 auto;
+	overflow:hidden;
+	/*基点*/
+	position : static;
+}
+input[type="radio"]{
+  -webkit-appearance: none;
+  width:40px;
+  height:40px;
+  border:2px solid #19283C;
+  border-radius:15px;
+  opacity:0.5;
+}
+
+/**
+リスト
+**/
+#L_cont{
+    padding-top:2%;
+    height: 100%;
+}
+#L_cont table{
+    background-color: #E0DDD4;
+    margin-bottom:4%;
+}
+.search_type_now{
+    line-height: 44px;
+}
+.search_type{
+    border-top: solid 3px #4e4134;
+    border-bottom: solid 1px #E0DDD4;
+    background-color: #f4f0e7;
+    color: #4e4134;
+    font-size: 12px;
+    line-height: 44px;
+    font-weight: bold;
+}
+.search_select{
+    text-align: center;
+    color: #fff;
+    background-color:#4e4134;
+}
+#C_cont{
+    padding-top:3%;
+}
+.search_head{
+    width: 100%;
+    padding-bottom: 1%;
+    border-bottom: dashed 1px #000000;
+}
+.search_head p{
+    font-size: x-large;
+    float: left;
+    padding-right: 2%;
+}
+
+.clothes_list{
+    width: 30%;
+    float: left;
+    height: 30%;
+    padding-right:3%;
+    padding-bottom: 5%;
+}
+.clothes_list img{
+    border-bottom: 2px solid #dddddd;
+}
+.list_item{
+    background-color: #fff;
+    border: 2px solid #dddddd;
+}
+.list_item:hover {
+    border: 2px solid #e3a1a1;
+}
+.clothes_text{
+    text-align: justify;
+    font-size: smaller;
+}
+.clothes_title{
+    font-size: large;
+}
+
+#paging{
+    clear: left;
+}
+
+#all{
+    z-index: 10;
+}
+#all_text{
+    position: absolute;
+    left: 10%;
+    margin-top: 4%;
+    cursor: pointer;
+}
+#not{
+	background:#fff;
+}
+#red{
+	background:#F30;
+}
+#bule{
+	background:#00F;
+}
+#green{
+	background:#6F0;
+}
+#broun{
+	background:#C93;
+}
+input[type="radio"]:checked{
+  border:8px solid #F00;
+  border-radius:50%;
+}
+
+
+/*footer{*/
+	/*background-repeat:repeat-x ;*/
+	/*line-height:100px;*/
+	/*text-align:center;*/
+	/*padding-top:30px;*/
+/*}*/
+/*
+ ページトップbtn
+-------------------------*/
+a.pagetop_btn {
+    display: block;
+    margin-right: 0px;
+    margin-left: auto;
+    width: 118px;
+    height: 15px;
+    text-indent: -5000px;
+}
+a.pagetop_btn:hover {
+    background-position: top right;
+}
+/*-----------------------------
+			pageTop
+------------------------------*/
+#pageTop{
+    padding-top:100px;
+    width:100%;
+    overflow:hidden;
+}
+#pageTop .pageTopWaku{
+    width:980px;
+    margin:0 auto;
+}
+#pageTop .pageTopWaku a.pageTop{
+    display:block;
+    width:100px;
+    color:#FFFFFF;
+    background-color:#BABABA;
+    font-size:12px;
+    line-height:20px;
+    text-align:center;
+    text-decoration:none;
+    padding:10px 0;
+    float:right;
+}
+#pageTop .pageTopWaku a:hover.pageTop{color:#F3F3F3;}
+
+
+/*-----------------------------
+			footer
+------------------------------*/
+#footer{
+    width:100%;
+    height:320px;
+    background-color:#BABABA;
+    overflow:hidden;
+}
+#footer .footerWrapper{
+    width:980px;
+    margin:0 auto;
+    background-color:#51A215;
+}
+#footer .footerWrapper .footer01{
+    width:217px;
+    padding:30px 0 40px 28px;
+    float:left;
+}
+#footer .footerWrapper .footer02{padding:30px 0 15px 28px;}
+#footer .footerWrapper .footer03{padding:30px 0 64px 28px;}
+#footer .footerWrapper .footer01 .tit{
+    font-size:12px;
+    line-height:20px;
+    color:#FFFFFF;
+    font-weight:bold;
+    padding:0 0 10px 0;
+}
+#footer .footerWrapper .footer01 li a{
+    padding:0 0 0 8px;
+    font-size:12px;
+    color:#FFFFFF;
+    line-height:24px;
+    text-decoration:none;
+}
+#footer .footerWrapper .footer01 li a:hover{color:#EFEFEF;}
+
+
+#footer .footerWrapper .leftFooter{
+    width:670px;
+    padding:0 0 0 0;
+    overflow:hidden;
+    float:left;
+}
+#footer .footerWrapper .leftFooter .linkFooter{
+    padding:15px 0 30px;
+}
+#footer .footerWrapper .leftFooter .linkFooter li a{
+    display:block;
+    padding:0 8px 0 10px;
+    font-size:12px;
+    line-height:18px;
+    color:#FFFFFF;
+    text-decoration:none;
+    float:left;
+}
+#footer .footerWrapper .leftFooter .linkFooter li.home a:hover{color:#EFEFEF;}
+#footer .footerWrapper .rightFooter{
+    width:240px;
+    padding:35px 0 0 0;
+    float:right;
+}
+#footer .footerWrapper .rightFooter a.btnFooter{
+    display:block;
+    width:240px;
+    height:31px;
+    padding:14px 0 0;
+    margin:5px 0 0 0;
+    font-size:13px;
+    line-height:20px;
+    color:#3985C3;
+    text-align:center;
+    text-decoration:none;
+}
+#footer .footerWrapper .rightFooter a:hover.btnFooter{
+    background-position:right top;
+    color:#7EB0DA;
+}
+
+#copy{
+    width:100%;
+    height:20px;
+    padding:16px 0;
+    background-color:#8A8A8A;
+    text-align:center;
+}
+#copy .copy{
+    font-family:verdana;
+    font-size:10px;
+    line-height:100%;
+    color:#FFFFFF;
+    width:980px;
+    margin:0 auto;
+}
+
+
+
+
+
+/*トグル*/
+#toggle{
+	line-height:120%;
+	position:fixed;
+	z-index:30;
+	display:none;
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+/*スマホ*/
+.nav-collapse{
+	display:none;
+}
+#toggle{
+	display:block;
+}
+#L_cont{
+	display:none;
+}
+#L_cont tr{
+	text-align:center;
+	width:100%;
+	float:left;
+}
+#L_cont{
+	float:left;
+	width:50%;
+	position:fixed;
+	z-index:20;
+}
+#C_cont{
+	float:left;
+	width:100%;
+}
+/********************
+*シャツの画像canvas
+*
+*********************/
+.imageCover6 {
+	width:55%;
+	margin:0 auto;
+}
+.thumbnails{
+	margin:0 auto;
+}
+.span9,.row,.thumbnails{
+	width:100%;
+}
+.span3{
+	width:20%;
+}
+td{
+	width:10%;
+}
+/********************
+*help
+*
+*********************/
+.fix{
+	position:static;
+	display:block;
+	z-index:10;
+}
+#help1{
+	position:absolute;
+	top :35%;
+	left:70%;
+}
+#help2{
+	position:absolute;
+	top :85%;
+	left:43%;
+	}
+#help3{
+	position:absolute;
+	top :57%;
+	left:53%;
+	}
+/*on off 画像*/
+.off,.on{
+	background-repeat:no-repeat;
+	height:51px;
+}
+.off{
+	background-image:url(../images/off.png);
+}
+.on {
+	background-image:url(../images/on.png);
+}
+#help{
+	text-align:right;
+}
+#help_img{
+	margin-left:85%;
+}
+#help_text{
+	position:absolute;
+}
+}
+@media only screen and (min-width: 768px) {
+/*または　@media only screen and (man-width: 768px) */
+.nav-collapse{
+	display:none;
+}
+#toggle{
+	display:block;
+}
+/*タブレット*/
+#L_cont{
+	display:block;
+}
+#L_cont tr{
+	text-align:center;
+	width:50%;
+	float:left;
+}
+#L_cont{
+	float:left;
+	width:100%;
+	position:fixed;
+	z-index:20;
+}
+#C_cont{
+	float:left;
+	margin-top:0%;
+	width:100%;
+}
+/********************
+*シャツの画像canvas
+*
+*********************/
+.imageCover6 {
+	width:55%;
+	margin:0 auto;
+}
+
+.thumbnails{
+	margin:0 auto;
+}
+.span9,.row,.thumbnails{
+	width:100%;
+}
+.span3{
+	width:30%;
+}
+td{
+	width:20%;
+}
+/********************
+*help
+*
+*********************/
+.fix{
+	position:static;
+	display:block;
+	z-index:10;
+}
+#help1{
+	position:absolute;
+	top :60%;
+	left:70%;
+}
+#help2{
+	position:absolute;
+	top :110%;
+	left:30%;
+	}
+#help3{
+	position:absolute;
+	top :90%;
+	left:45%;
+	}
+/*on off 画像*/
+.off,.on{
+	background-repeat:no-repeat;
+	height:51px;
+}
+.off{
+	background-image:url(../images/off.png);
+}
+.on {
+	background-image:url(../images/on.png);
+}
+#help{
+	text-align:right;
+}
+#help_img{
+	margin-left:85%;
+}
+#help_text{
+	position:absolute;
+}
+}
+@media only screen and (min-width: 1110px) {
+    /*960~1260*/
+    #toggle {
+        display: none;
+    }
+
+    .nav-collapse {
+        display: block;
+    }
+
+    #L_cont {
+        display: block;
+    }
+
+    #L_cont tr {
+        width: 100%;
+        float: left;
+    }
+
+    #L_cont {
+        float: left;
+        width: 23%;
+        position: relative;
+        z-index: 10;
+    }
+
+    #L_cont table, #L_cont form {
+        overflow: hidden;
+    }
+
+    #C_cont {
+        float: left;
+        width: 62%;
+        height: 100%;
+        margin-top: 0%;
+        margin-left: 2%;
+    }
+
+    /********************
+    *シャツの画像canvas
+    *
+    *********************/
+    .imageCover6 {
+       /* padding-left: 70px;*/
+        width: 100%;
+    }
+    .imageCover6 ,.imageCover6 canvas{
+        overflow: hidden;
+}
+.thumbnails{
+	margin:0 auto;
+}
+.span9,.row,.thumbnails{
+	width:100%;
+}
+.span3{
+	width:30%;
+}
+td{
+	width:20%;
+}
+/********************
+*help
+*
+*********************/
+.fix{
+	position:static;
+	display:block;
+	z-index:10;
+}
+#help1{
+	position:absolute;
+	top :40%;
+	left:67%;
+}
+#help2{
+	position:absolute;
+	top :85%;
+	left:40%;
+	}
+#help3{
+	position:absolute;
+	top :59%;
+	left:52%;
+	}
+/*on off 画像*/
+.off,.on{
+	background-repeat:no-repeat;
+	height:51px;
+}
+.off{
+	background-image:url(../images/off.png);
+}
+.on {
+	background-image:url(../images/on.png);
+}
+#help{
+	text-align:right;
+}
+#help_img{
+	margin-left:80%;
+}
+#help_text{
+	position:absolute;
+}
+}
